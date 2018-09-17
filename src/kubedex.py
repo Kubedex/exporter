@@ -7,7 +7,7 @@ import os
 import sys
 import time
 from lib import tiller
-
+from collections import Counter
 
 tiller_endpoint = 'tiller-deploy.kube-system'
 
@@ -40,10 +40,9 @@ class CustomCollector(object):
                 print(e)
                 continue
         metric = Metric('helm_chart_info', 'Helm chart information', 'gauge')
-        for release in all_releases:
-            name = release.chart.metadata.name
-            version = release.chart.metadata.version
-            metric.add_sample('helm_chart_info', value=1, labels={"name": name, "version": version})
+        chart_count = Counter([(release.chart.metadata.name, release.chart.metadata.version) for release in all_releases])
+        for chart in chart_count:
+            metric.add_sample('helm_chart_info', value=chart_count[chart], labels={"name": chart[0], "version": chart[1]})
         yield metric
 
 
