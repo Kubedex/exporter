@@ -26,3 +26,5 @@ This dynamically updates as you add and remove charts.
 You can then make pretty Grafana dashboards showing installed Helm package versions.
 
 See https://www.robustperception.io/exposing-the-software-version-to-prometheus for more info.
+
+Full tutorial for setup on minikube is here: https://kubedex.com/kubedex-helm-chart-exporter-for-prometheus/
