@@ -40,9 +40,13 @@ class CustomCollector(object):
                 print(e)
                 continue
         metric = Metric('helm_chart_info', 'Helm chart information', 'gauge')
-        chart_count = Counter([(release.chart.metadata.name, release.chart.metadata.version) for release in all_releases])
+        chart_count = Counter([(release.chart.metadata.name, release.chart.metadata.version, release.namespace) for release in all_releases])
         for chart in chart_count:
-            metric.add_sample('helm_chart_info', value=chart_count[chart], labels={"name": chart[0], "version": chart[1]})
+            metric.add_sample(
+                    'helm_chart_info', 
+                    value=chart_count[chart], 
+                    labels={"name": chart[0], "version": chart[1], "namespace": chart[2]}
+             )
         yield metric
 
 
