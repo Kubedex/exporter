@@ -15,6 +15,8 @@ if 'ENV' in os.environ:
     if os.environ['ENV'] == 'dev':
         tiller_endpoint = '127.0.0.1'
 
+if 'TILLER_NAMESPACE' in os.environ:
+    tiller_endpoint = "tiller-deploy.%s" % os.environ['TILLER_NAMESPACE']
 
 class CustomCollector(object):
     def __init__(self):
