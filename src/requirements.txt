@@ -5,7 +5,7 @@ grpcio-tools==1.15.0
 prometheus-client==0.3.1
 protobuf==3.6.1
 PyYAML==3.12
-requests==2.14.2
+requests>=2.20.0
 six==1.11.0
 smmap2==2.0.4
 supermutes==0.2.5
