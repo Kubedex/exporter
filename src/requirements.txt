@@ -1,6 +1,6 @@
 gitdb2==2.0.4
 GitPython==2.1.10
-grpcio==1.15.0
+grpcio==1.53.0
 grpcio-tools==1.15.0
 prometheus-client==0.3.1
 protobuf==3.6.1
